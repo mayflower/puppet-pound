@@ -12,7 +12,8 @@ class pound::base {
         '/etc/pound/pound.cfg' :
             owner => root,
             group => root,
-            mode => '0644'
+            mode => '0644',
+            notify => Service['pound'],
     }
     package {
         'pound' :
