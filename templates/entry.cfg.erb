@@ -1,22 +1,22 @@
 #
-# Listener for domain <%=name%>
+# Listener for domain <%=@name%>
 #
-<%=listen_protocol%>
-    Address <%=listen_ip%>
-    Port    <%=listen_port%>
-    <% if listen_protocol == 'ListenHTTPS' %>
-    Cert    "<%=ssl_cert%>"
+<%=@listen_protocol%>
+    Address <%=@listen_ip%>
+    Port    <%=@listen_port%>
+    <% if @listen_protocol == 'ListenHTTPS' %>
+    Cert    "<%=@ssl_cert%>"
     <% end %>
-    <% if listen_protocol == 'ListenHTTPS' %>
+    <% if @listen_protocol == 'ListenHTTPS' %>
     AddHeader "X-Forwarded-Proto: https"
     <% end %>
     Service
-        <% if head_require.to_s != 'undef' then %>
-        HeadRequire "<%=head_require-%>"
+        <% if @head_require.to_s != 'undef' then %>
+        HeadRequire "<%=@head_require-%>"
         <% end %>
         BackEnd
-            Address <%=backend_ip%>
-            Port    <%=backend_port%>
+            Address <%=@backend_ip%>
+            Port    <%=@backend_port%>
         End
     End
 End
