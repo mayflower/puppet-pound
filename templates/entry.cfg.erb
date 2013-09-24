@@ -6,6 +6,10 @@
     Port    <%=@listen_port%>
     <% if @listen_protocol == 'ListenHTTPS' %>
     Cert    "<%=@ssl_cert%>"
+    <% if @ssl_ciphers.to_s != 'undef' then %>
+    SSLHonorCipherOrder 1
+    Ciphers "<%=@ssl_ciphers%>"
+    <% end %>
     <% end %>
     <% if @listen_protocol == 'ListenHTTPS' %>
     AddHeader "X-Forwarded-Proto: https"

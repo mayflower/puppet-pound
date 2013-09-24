@@ -4,10 +4,10 @@ define pound::entry (
     $listen_port,
     $listen_protocol,
     $ssl_cert,
+    $ssl_ciphers=undef,
     $head_require=undef,
     $backend_ip,
     $backend_port) {
-
 
     concat::fragment {
         "pound_entry-${name}" :
